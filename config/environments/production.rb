@@ -78,13 +78,14 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.aciton_mailer.default_url_options = { host: "calm-dusk-90631.herokuapp.com" }
-  AcitonMailer::Base.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings =
+  {
     user_name: ENV['SENDGRID_USERNAME'],
     password: ENV['SENDGRID_PASSWORD'],
     domain: "heroku.com",
-    address:"smtp.sendgrid.net",
-    port:587,
+    address: "smtp.sendgrid.net",
+    port: 587,
     authentication: :plain,
     enable_starttls_auto: true
   }
