@@ -1,0 +1,10 @@
+<h1>お問い合わせありがとうございました</h1>
+<p>以下の内容で受け付けました。</p>
+<p><%= @contact.created_at %></p>
+<p>名前: <%= @contact.name %></p>
+<p>アドレス: <%= @contact.email %></p>
+<p>内容: <%= @contact.content %></p>
+
+<p>
+  <%= link_to "【Achieve】トップページ", root_url %>
+</p>
