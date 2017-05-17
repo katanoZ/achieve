@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <h3>poemの一覧</h3>
+    <% @poems.each do |poem| %>
+      <div class="row">
+        <p>タイトル:<%= poem.title %></p>
+        <p>本文:<%= poem.content %></p>
+        <%= link_to "詳細を見る", poem_path(poem.id), class: "btn btn-info" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<section>
+  <div id="page-top-btn" class="page-top-btn">
+    <p><a class="move-page-top" id="move-page-top">▲</a></p>
+  </div>
+</section>

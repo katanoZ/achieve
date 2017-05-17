@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
+    <h3>poemの詳細</h3>
+    <p>ID:<%= @poem.id %></p>
+    <p>タイトル:<%= @poem.title %></p>
+    <p>本文:<%= @poem.content %></p>
+    <p>作成:<%= @poem.created_at %></p>
+    <p>更新:<%= @poem.updated_at %></p>
+    <%= link_to "一覧に戻る", poems_path, class: "btn btn-primary" %>
+  </div>
+</div>
