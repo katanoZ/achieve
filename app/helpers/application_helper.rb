@@ -16,8 +16,8 @@ module ApplicationHelper
       image_url = "no_image.png"
     end
 
-    case controller_name
-    when "blogs"
+    case size
+    when "small"
       image_tag(image_url, alt: user.name, size: "100x100", class: "img-circle")
     else
       image_tag(image_url, alt: user.name)
