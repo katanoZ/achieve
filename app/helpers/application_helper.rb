@@ -1,12 +1,26 @@
 module ApplicationHelper
-  def profile_img(user)
-    return image_tag(user.avatar, alt: user.name) if user.avatar?
-    
-    unless user.provider.blank?
-      img_url = user.image_url
-    else
-      img_url = "no_image.png"
+  def profile_img(user, size = "")
+
+    if user.avatar?
+      case size
+      when "small"
+        return image_tag(user.avatar, alt: user.name, size: "100x100", class: "img-circle")
+      else
+        return image_tag(user.avatar, alt: user.name)
+      end
     end
-    image_tag(img_url, alt: user.name)
+
+    unless user.provider.blank?
+      image_url = user.image_url
+    else
+      image_url = "no_image.png"
+    end
+
+    case controller_name
+    when "blogs"
+      image_tag(image_url, alt: user.name, size: "100x100", class: "img-circle")
+    else
+      image_tag(image_url, alt: user.name)
+    end
   end
 end
