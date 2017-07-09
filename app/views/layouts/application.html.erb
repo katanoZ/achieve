@@ -27,6 +27,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><%= link_to "ブログ", blogs_path %></li>
+                  <li><%= link_to "ユーザ一覧", users_path if user_signed_in? %></li>
                 </ul>
               </li>
               <% if user_signed_in? %>
@@ -41,9 +42,9 @@
         </div>
       </nav>
     </header>
-  
+
     <%= yield %>
-  
+
     <footer>
         <p>運営会社DIVE INTO CODE株式会社</p>
         <p>©️2015-2017 Copyright DIVE INTO CODE Corp.</p>
