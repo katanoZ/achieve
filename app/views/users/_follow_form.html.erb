@@ -1,5 +1,7 @@
 <div id="follow_form_<%= user.id %>">
-  <% unless current_user.following?(user) %>
+  <% if user == current_user %>
+    <p class="text-danger h4">あなた</p>
+  <% elsif !current_user.following?(user) %>
     <%= form_for(current_user.relationships.build(followed_id: user.id), remote: true) do |f| %>
       <%= f.hidden_field :followed_id %>
       <%=f.submit "フォロー", class: "btn btn-large btn-primary margin-top10" %>
