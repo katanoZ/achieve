@@ -1,13 +1,12 @@
 <div class="container">
-  <h2>ユーザー詳細</h2>
-  <div class="col-xs-12">
+  <h2>ユーザ詳細</h2>
     <br>
     <%= profile_img(@user, "small") %><br>
     <%= @user.name %><br>
     <%= @user.email %><br>
-    <%= link_to "ユーザ一覧に戻る", users_path, class: "btn btn-default margin-top10" %>
-
-    
-
-  </div>
+    <%= link_to "ユーザ一覧に戻る", users_path, class: "btn btn-default margin-top10" %><br>
+    <hr>
+    <%= render "followed_users", user:@user %><br>
+    <hr>
+    <%= render "followers", user:@user %><br>
 </div>
