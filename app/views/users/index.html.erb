@@ -7,6 +7,11 @@
       <%= user.email %><br>
       <%= link_to "ユーザ詳細", user_path(user), class: "btn btn-default margin-top10" %>
       <%= render "follow_form", user:user %>
+      <% if user.id != current_user.id %>
+        <div class="item margin-top10">
+          <%= link_to "メッセージ", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: "post" %>
+        </div>
+      <% end %>
     </div>
   <%end%>
 </div>
