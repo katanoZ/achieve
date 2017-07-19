@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     resources :messages
   end
 
+  get 'notifications/index'
+
   root "top#index"
 
   if Rails.env.development?

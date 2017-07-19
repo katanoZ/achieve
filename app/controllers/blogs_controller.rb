@@ -9,6 +9,8 @@ class BlogsController < ApplicationController
   def show
     @comment = @blog.comments.build
     @comments = @blog.comments
+    Notification.find(params[:notification_id]).update(read: true) if params[:notification_id]
+    @notifications_count = Notification.where(user_id: current_user.id).where(read: false).count
   end
 
   def new

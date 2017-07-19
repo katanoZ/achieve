@@ -6,6 +6,25 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+
+    <% if user_signed_in? %>
+    <script>
+      var pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>',{
+        cluster: 'ap1',
+        encrypted: true
+      });
+
+      var channel = pusher.subscribe("user_<%= current_user.id %>_channel");
+      channel.bind('comment_created', function(data) {
+        alert(data.message);
+      });
+      channel.bind('notification_created', function(data) {
+      $('#unread_count').html(data.unread_counts);
+      });
+
+    </script>
+    <% end %>
   </head>
   <body>
     <header>
@@ -37,6 +56,14 @@
               <% else %>
                 <li><%= link_to "ログイン", new_user_session_path %></li>
                 <li><%= link_to "サインアップ", new_user_registration_path %></li>
+              <% end %>
+
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to notifications_index_path, class: "navbar-brand" do %>
+                    <i class="fa fa-bell fa-1x"><span id="unread_count"><%= @notifications_count %></span></i>
+                  <% end %>
+                </li>
               <% end %>
             </ul>
           </div>

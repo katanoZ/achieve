@@ -1,0 +1,17 @@
+<div class="container">
+  <h2>お知らせ</h2>
+  <% if @notifications.empty? %>
+    <br>
+    <p class="text-muted">新着の通知はありません。</p>
+  <% else %>
+    <% @notifications.each do |notification| %>
+      <hr>
+      <div class="text-primary"><strong>【 <%= read_or_unread(notification.read) %> 】</strong></div><br>
+      <p>
+        <%= notification.comment.user.try(:name) %>さんが
+        あなたのブログ（<%= link_to "#{notification.comment.blog.title}", blog_path(notification.comment.blog, notification_id: notification.id) %>）にコメントしました。
+      </p>
+      <p><%= posted_time(notification.created_at) %></p>
+    <% end %>
+  <% end %>
+</div>

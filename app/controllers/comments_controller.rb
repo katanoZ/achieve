@@ -5,15 +5,21 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     @blog = @comment.blog
+    @notification = @comment.notifications.build(user_id: @blog.user.id)
 
     respond_to do |format|
       if @comment.save
         flash.now[:notice] = "コメントを投稿しました。"
         format.html{redirect_to blog_path(@blog)}
         format.js {render :index}
+
+        unless @comment.blog.user_id == current_user.id
+        Pusher.trigger("user_#{@comment.blog.user_id}_channel", "comment_created", {
+          message: "あなたの作成したブログにコメントがつきました"
+          })
+        end
+        Pusher.trigger("user_#{@comment.blog.user_id}_channel", 'notification_created', { unread_counts: Notification.where(user_id: @comment.blog.user.id, read: false).count })
       else
-        #@comments = @blog.comments
-        #format.html {render :template => "blogs/show"}
         format.html {render :new}
       end
     end
