@@ -6,8 +6,9 @@
   <% else %>
     <% @notifications.each do |notification| %>
       <hr>
-      <div class="text-primary"><strong>【 <%= read_or_unread(notification.read) %> 】</strong></div><br>
+      <div><span class="label label-info"><%= read_or_unread(notification.read) %></span></div>
       <p>
+        <%= profile_img(notification.comment.user, size: :xsmall) %>&nbsp;&nbsp;
         <%= notification.comment.user.try(:name) %>さんが
         あなたのブログ（<%= link_to "#{notification.comment.blog.title}", blog_path(notification.comment.blog, notification_id: notification.id) %>）にコメントしました。
       </p>
@@ -15,3 +16,9 @@
     <% end %>
   <% end %>
 </div>
+
+<section>
+    <div id="page-top-btn" class="page-top-btn">
+        <p><a class="move-page-top" id="move-page-top">▲</a></p>
+    </div>
+</section>

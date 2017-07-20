@@ -1,10 +1,12 @@
 module ApplicationHelper
-  def profile_img(user, size = "")
+  def profile_img(user, size: :default)
 
     if user.avatar?
       case size
-      when "small"
+      when :small
         return image_tag(user.avatar, alt: user.name, size: "100x100", class: "img-circle")
+      when :xsmall
+        return image_tag(user.avatar, alt: user.name, size: "50x50", class: "img-circle")
       else
         return image_tag(user.avatar, alt: user.name)
       end
@@ -17,8 +19,10 @@ module ApplicationHelper
     end
 
     case size
-    when "small"
+    when :small
       image_tag(image_url, alt: user.name, size: "100x100", class: "img-circle")
+    when :xsmall
+      image_tag(image_url, alt: user.name, size: "50x50", class: "img-circle")
     else
       image_tag(image_url, alt: user.name)
     end

@@ -1,7 +1,7 @@
 <div class="container">
   <h2>ユーザ詳細</h2>
     <br>
-    <%= profile_img(@user, "small") %><br>
+    <%= profile_img(@user, size: :small) %><br>
     <%= @user.name %><br>
     <%= @user.email %><br>
     <%= link_to "ユーザ一覧に戻る", users_path, class: "btn btn-default margin-top10" %><br>
