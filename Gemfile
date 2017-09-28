@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use postgresql as the database for Active Record
@@ -32,6 +31,24 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem "twitter-bootstrap-rails"
+gem "jquery-turbolinks"
+gem "rails_12factor", group: :production
+gem "devise"
+gem "faker"
+gem "rails_admin"
+gem "cancan"
+gem "her"
+gem "omniauth"
+gem "omniauth-twitter"
+gem "omniauth-facebook"
+gem "carrierwave"
+gem "rmagick"
+gem "pusher"
+gem "fog"
+gem "dotenv-rails"
+gem "unicorn"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -47,17 +64,9 @@ group :development, :test do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano3-unicorn'
-
   gem "rspec-rails"
   gem "factory_girl_rails"
 end
-
-gem "twitter-bootstrap-rails"
-gem "jquery-turbolinks"
-
-gem "rails_12factor", group: :production
-gem "devise"
-gem "faker"
 
 group :development do
   gem "letter_opener_web"
@@ -73,22 +82,3 @@ group :test do
   gem "launchy"
   gem "selenium-webdriver"
 end
-
-gem "rails_admin"
-gem "cancan"
-
-gem "her"
-
-gem "omniauth"
-gem "omniauth-twitter"
-gem "omniauth-facebook"
-
-gem "carrierwave"
-gem "rmagick"
-
-gem "pusher"
-
-gem "fog"
-
-gem "dotenv-rails"
-gem "unicorn"
